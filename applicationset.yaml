@@ -1,0 +1,61 @@
+# Source: argocd-apps/templates/projects.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: platform-tools
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: alpha-cluster-capten
+  sourceRepos:
+    - '*'
+  destinations:
+    - name: ''
+      server: 'https://127.0.0.1:39995'
+      namespace: '*'
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'
+---
+# Source: argocd-apps/templates/applicationsets.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: alpha-platform-tools
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        directories:
+        - path: vitess/*
+          repoURL: https://github.com/Jeremy4040/argocd-appset.git
+          revision: main
+  syncPolicy:
+    preserveResourcesOnDeletion: false
+  template:
+    metadata:
+      name: vitess
+    spec:
+      project: platform-tools
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+      source:
+        - repoURL: '{{directories.repoURL}}'
+          targetRevision: '{{directories.revision}}'
+          path: '{{directories.path}}'
+      destination:
+        name: ''
+        server: 'https://127.0.0.1:39995'
+        namespace: platform
+      syncPolicy:
+        syncOptions:
+        - CreateNamespace=true
+        automated:
+          selfHeal: true
+          prune: true
