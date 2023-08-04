@@ -51,7 +51,7 @@ spec:
         path: '{{directories.path}}'
       destination:
         name: ''
-        server: 'https://127.0.0.1:39995'
+        server: 'https://kubernetes.default.svc'
         namespace: platform
       syncPolicy:
         syncOptions:
