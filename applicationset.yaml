@@ -12,7 +12,7 @@ spec:
     - '*'
   destinations:
     - name: ''
-      server: 'https://127.0.0.1:39995'
+      server: 'https://kubernetes.default.svc'
       namespace: '*'
   clusterResourceWhitelist:
     - group: '*'
@@ -40,7 +40,7 @@ spec:
     metadata:
       name: vitess
     spec:
-      project: default
+      project: platform-tools
       syncPolicy:
         automated:
           prune: true
@@ -50,7 +50,7 @@ spec:
         targetRevision: HEAD
         path: vitess/*
       destination:
-        name: ''
+        name: 'kind-cluster'
         server: 'https://kubernetes.default.svc'
         namespace: platform
       syncPolicy:
