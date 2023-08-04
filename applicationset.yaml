@@ -32,7 +32,7 @@ spec:
     - git:
         directories:
         - path: vitess/*
-        repoURL: 'https://github.com/Jeremy4040/argocd-appset.git'
+        repoURL: 'https://github.com/Jeremy4040/argocd-appset'
         revision: main
   syncPolicy:
     preserveResourcesOnDeletion: false
