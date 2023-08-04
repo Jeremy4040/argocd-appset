@@ -28,14 +28,14 @@ metadata:
   name: alpha-platform-tools
   namespace: argocd
 spec:
-   generators:
-     - git:
-         directories:
-           - path: vitess/*
-         repoURL: 'https://github.com/Jeremy4040/argocd-appset.git'
-         revision: HEAD
-   syncPolicy:
-     preserveResourcesOnDeletion: false
+  generators:
+    - git:
+        directories:
+          - path: vitess/*
+        repoURL: 'https://github.com/Jeremy4040/argocd-appset.git'
+        revision: HEAD
+  syncPolicy:
+    preserveResourcesOnDeletion: false
   template:
     metadata:
       name: vitess
