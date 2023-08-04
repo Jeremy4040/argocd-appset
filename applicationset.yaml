@@ -31,11 +31,11 @@ spec:
    generators:
      - git:
          directories:
-          - path: vitess/*
+           - path: vitess/*
          repoURL: 'https://github.com/Jeremy4040/argocd-appset.git'
          revision: HEAD
-  syncPolicy:
-    preserveResourcesOnDeletion: false
+   syncPolicy:
+     preserveResourcesOnDeletion: false
   template:
     metadata:
       name: vitess
