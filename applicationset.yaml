@@ -32,6 +32,7 @@ spec:
     - git:
         directories:
           - path: vitess/*
+            chart: {}
         repoURL: 'https://github.com/Jeremy4040/argocd-appset.git'
         revision: HEAD
   syncPolicy:
@@ -49,6 +50,7 @@ spec:
         repoURL: 'https://github.com/Jeremy4040/argocd-appset.git'
         targetRevision: HEAD
         path: vitess/*
+        chart: {}
       destination:
         name: 'kind-cluster'
         server: 'https://kubernetes.default.svc'
