@@ -33,7 +33,7 @@ spec:
         directories:
         - path: vitess/*
         repoURL: 'https://github.com/Jeremy4040/argocd-appset'
-        revision: main
+        revision: HEAD
   syncPolicy:
     preserveResourcesOnDeletion: false
   template:
@@ -47,7 +47,7 @@ spec:
           selfHeal: true
       source:
         repoURL: 'https://github.com/Jeremy4040/argocd-appset'
-        targetRevision: main
+        targetRevision: HEAD
         path: vitess/*
       destination:
         name: ''
